@@ -1,8 +1,8 @@
 pipeline{
 	agent{
 		label{
-			label 'built-in'
-			customWorkspace '/mnt/projects1'
+			label 'slave'
+			customWorkspace '/mnt/data'
 		}
 	}
 		
@@ -11,7 +11,7 @@ pipeline{
 
 			steps{
 
-				sh"yum install httpd -y"
+				sh"sudo yum install httpd -y"
 			}
 
 		}	
@@ -19,7 +19,7 @@ pipeline{
 
 			steps{
 
-				sh"service httpd start"
+				sh" sudo service httpd start"
 			}
 
 		}	
@@ -27,8 +27,8 @@ pipeline{
 
 			steps{
 
-				sh"cp -r /mnt/projects1/index.html /var/www/html"
-				sh"chmod -R 777 /var/www/html"
+				sh"sudo cp -r /mnt/data/index.html /var/www/html"
+				sh"sudo chmod -R 777 /var/www/html"
 			}
 
 		}	
